@@ -1,0 +1,29 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+.header-bar {
+  background-color: #292929;
+}
+.input-dark {
+  background-color: #444;
+  border-color: transparent;
+  color: #FFFFFF;
+}
+.input-dark:focus {
+  color: #FFFFFF;
+  background-color: #555;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+.form-group {
+  position: relative;
+}
+.form-group input,
+.form-group textarea {
+  position: relative;
+  z-index: 2;
+}
+p{
+  text-align: center;
+}
