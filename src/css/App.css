@@ -27,3 +27,13 @@ body{
 p{
   text-align: center;
 }
+.overview{
+  height: 320px;
+}
+.nav-tabs{
+  color: #292929
+}
+.nav li{
+  padding-left: 30px;
+  
+}

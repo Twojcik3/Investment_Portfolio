@@ -50,7 +50,7 @@ const Register = () => {
     }
 
     return (
-        <div className="col-lg-5 pl-lg-5 pb-3 py-lg-5">
+        <div className="col-lg-5 pl-lg-5 pb-3 py-lg-5 offset-md-1">
             <form className="register-form">
                 <div className="form-group">
                     <label htmlFor="register-username" className="mb-1 text-muted"><small>Nazwa użytkownika</small></label>
