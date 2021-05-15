@@ -24,7 +24,7 @@ body{
   position: relative;
   z-index: 2;
 }
-p{
+footer p{
   text-align: center;
 }
 .overview{
@@ -33,7 +33,35 @@ p{
 .nav-tabs{
   color: #292929
 }
+
 .nav li{
   padding-left: 30px;
+}
+.nav-tabs a{
+  text-decoration: none;
+  color: #292929;
   
+  transition: .2s;
+}
+.nav-tabs a:hover{
+  transform: translateX(20px);
+}
+.nav-tabs li.active{
+  text-decoration: underline 1px solid;
+  font-weight: bold;
+}
+.Item-prop{
+  float: left;
+  
+  padding-top: 10px;
+}
+.Item-table{
+  height: 40px;
+  border-bottom: 0.5px solid black;
+}
+.green{
+  color:lightgreen;
+}
+.red{
+  color: red;
 }
