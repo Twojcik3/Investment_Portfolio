@@ -22,21 +22,25 @@ const Register = () => {
     const history = useHistory();
 
     useEffect(() => {
-        getUsers()
-    }, [])
-    const getUsers = () => {
+        let mounted = true;
         axios.get('http://localhost:5000/getUsers', {
             header: {
                 'Content-Type': 'application/json'
             },
             withCredentials: true
         }).then((response) => {
-            const usersTab = response.data;
-            setUsers(usersTab)
+            if (mounted) {
+                const usersTab = response.data;
+                setUsers(usersTab)
+            }
+
         }).catch((err) => {
             console.log(err)
         })
-    }
+        return () => {
+            mounted = false;
+        }
+    }, [])
     const handleUsername = (e) => {
         setRegisterUsername(e.target.value)
         checkUsername(e.target.value)

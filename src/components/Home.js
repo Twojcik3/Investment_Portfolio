@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './HomeComponents/Header';
 import OverView from './HomeComponents/Overview';
 import Register from './HomeComponents/Register';
-import Footer from './HomeComponents/Footer';
+import Footer from './Footer';
 
 const Home = () => {
     return (

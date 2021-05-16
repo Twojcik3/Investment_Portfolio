@@ -8,7 +8,9 @@ import ErrorMessage from './ErrorMessage';
 const Login = () => {
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("")
+    const [username, setUsername] = useContext(AppContext);
     const [isAuth, setIsAuth] = useContext(AppContext);
+
     const [correctLogin, setCorrectLogin] = useState(true);
     const history = useHistory();
 
@@ -30,7 +32,9 @@ const Login = () => {
     const changeCorrectLogin = (type) => {
         setCorrectLogin(type)
     }
-
+    const asingUsername = (username) => {
+        setUsername(username)
+    }
     const submitLogin = (e) => {
         e.preventDefault();
         const user = {
@@ -48,6 +52,7 @@ const Login = () => {
             if (response.status !== 200) {
                 changeCorrectLogin(false)
             }
+            asingUsername(user.username)
             changeAuth(true)
             handlePath()
             changeCorrectLogin(true);

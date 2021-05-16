@@ -25,19 +25,27 @@ const OverView = () => {
     const coinGeckoAPI = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1&sparkline=false';
 
     useEffect(() => {
-        getCurrencyRates();
-        getCryptoCurrencyRates()
+        let mounted = true;
+        getCurrencyRates(mounted);
+        getCryptoCurrencyRates(mounted);
+        return () => {
+            mounted = false;
+        }
     }, [])
 
-    const getCryptoCurrencyRates = async () => {
-        const response = await fetch(coinGeckoAPI);
-        const data = await response.json();
-        setCryptoCurrencyTable(data)
+    const getCryptoCurrencyRates = async (mounted) => {
+        if (mounted) {
+            const response = await fetch(coinGeckoAPI);
+            const data = await response.json();
+            setCryptoCurrencyTable(data);
+        }
     }
-    const getCurrencyRates = async () => {
-        const response = await fetch(NBPAPI);
-        const data = await response.json();
-        setCurrencyTable(data[0].rates)
+    const getCurrencyRates = async (mounted) => {
+        if (mounted) {
+            const response = await fetch(NBPAPI);
+            const data = await response.json();
+            setCurrencyTable(data[0].rates)
+        }
     }
 
 

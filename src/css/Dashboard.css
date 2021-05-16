@@ -1,0 +1,15 @@
+.Navigation{
+    height: 80vh;
+    background-color: #292929;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 30px;
+}
+.containerDashboard{
+    margin-left: 10px;
+}
+.Content{
+    
+}

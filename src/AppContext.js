@@ -4,5 +4,6 @@ export const AppContext = createContext();
 
 export const AppProvider = (props) => {
     const [isAuth, setIsAuth] = useState(false);
-    return <AppContext.Provider value={[isAuth, setIsAuth]}>{props.children}</AppContext.Provider>
+    const [username, setUsername] = useState("")
+    return <AppContext.Provider value={[username, setUsername], [isAuth, setIsAuth]}>{props.children}</AppContext.Provider>
 }
