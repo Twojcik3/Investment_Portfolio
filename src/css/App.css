@@ -65,3 +65,9 @@ footer p{
 .red{
   color: red;
 }
+.Error-message{
+  text-align: center;
+  margin-top: 15px;
+  height: 8px;
+  padding-top: 2px;
+}

@@ -4,8 +4,22 @@ import QuotesTable from '../HomeComponents/QuotesTable'
 const OverView = () => {
     const [currencyTable, setCurrencyTable] = useState([]);
     const [cryptoCureencyTable, setCryptoCurrencyTable] = useState([]);
-    const [indexesTable, setIndexesTable] = useState([]);
-    const [preciousMetals, setPreciousMetals] = useState([]);
+    //const [indexesTable, setIndexesTable] = useState([]);
+    // const [preciousMetals, setPreciousMetals] = useState([]);
+
+    const indexesTable = [
+        { name: 'DAX', rates: 15000, currency: 'PKT', change24: 1 },
+        { name: 'WIG20', rates: 2050, currency: 'PKT', change24: -0.5 },
+        { name: 'NASDAQ', rates: 14000, currency: 'PKT', change24: 1.2 },
+        { name: 'S&P 500', rates: 4200, currency: 'PKT', change24: 1.5 },
+    ]
+    const preciousMetals = [
+        { name: 'ZŁOTO', rates: 1870, currency: 'USD', change24: -1.2 },
+        { name: 'SREBRO', rates: 30, currency: 'USD', change24: 3.0 },
+        { name: 'PALLAD', rates: 1900, currency: 'USD', change24: 2 },
+        { name: 'PLATYNA', rates: 2000, currency: 'USD', change24: -1.5 },
+    ]
+
 
     const NBPAPI = 'http://api.nbp.pl/api/exchangerates/tables/A/';
     const coinGeckoAPI = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1&sparkline=false';
@@ -28,7 +42,7 @@ const OverView = () => {
 
 
     return (
-        <div className="col-lg-6 overview col-sm-12">
+        <div className="col-lg-6 overview col-sm-12 col-xs-12">
             <ul className="nav nav-tabs" role="tablist">
                 <li className={(window.location.href.substr(window.location.href.length - 4, 4) === "1tab") ? "active" : "none-active"} role="presentation">
                     <a href="#1tab" role="tab" data-toggle="tab">Indeksy</a>
@@ -43,7 +57,7 @@ const OverView = () => {
                     <a href="#4tab" role="tab" data-toggle="tab">Metale szlachetne</a>
                 </li>
             </ul>
-            <div className="tab-content col-lg-12 col-sm-12">
+            <div className="tab-content col-lg-12 col-sm-12 col-xs-12">
                 <div className={(
                     (window.location.href.substr(window.location.href.length - 4, 4) !== "2tab") &&
                     (window.location.href.substr(window.location.href.length - 4, 4) !== "3tab") &&

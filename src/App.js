@@ -15,7 +15,6 @@ const App = () => {
       <AppProvider>
         <Route path="/" exact component={Home}></Route>
         <ProtectedRoute path="/dashboard" component={Dashboard} />
-
       </AppProvider>
     </Router>
   )
