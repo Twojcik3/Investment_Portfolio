@@ -1,15 +1,16 @@
 .Navigation{
     height: 80vh;
     background-color: #292929;
-    color: white;
     border-radius: 20px;
     text-align: center;
-    padding-top: 20px;
-    font-size: 30px;
+    font-size: 20px;
 }
 .containerDashboard{
     margin-left: 10px;
 }
-.Content{
-    
+.Navigation a{
+        text-decoration: none;
+        color: white;
+        transition: .2s;
+      
 }
