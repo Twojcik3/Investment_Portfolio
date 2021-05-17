@@ -1,16 +1,37 @@
 .Navigation{
-    height: 80vh;
+    height: 70vh;
     background-color: #292929;
     border-radius: 20px;
-    text-align: center;
-    font-size: 20px;
+    font-size: 18px;
 }
 .containerDashboard{
-    margin-left: 10px;
+    margin-left: 40px;
 }
 .Navigation a{
-        text-decoration: none;
-        color: white;
-        transition: .2s;
-      
+    text-decoration: none;
+    color: white;
+    transition: .2s;
+    border-bottom: 2px solid white;
+}
+.Navigation li{
+    padding-top: 35px;
+    text-align: left; 
+}
+.Navigation a:hover{
+    border-bottom-color: yellow;
+}
+.Navigation li:hover{
+    transform: translateX(20px);
+}
+li .active{
+    border-bottom-color:  yellow;
+}
+
+.mainPage{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    text-align: center;
 }

@@ -18,7 +18,6 @@ const Header = () => {
             httpOnly: false
         }).then((res) => {
             changeAuth(false)
-            console.log(isAuth)
         }).catch((err) => {
             console.log(err)
         })
