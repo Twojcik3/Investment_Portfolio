@@ -5,7 +5,7 @@ const OverView = () => {
     const [currencyTable, setCurrencyTable] = useState([]);
     const [cryptoCureencyTable, setCryptoCurrencyTable] = useState([]);
     //const [indexesTable, setIndexesTable] = useState([]);
-    // const [preciousMetals, setPreciousMetals] = useState([]);
+    const [preciousMetals, setPreciousMetals] = useState([]);
 
     const indexesTable = [
         { name: 'DAX', rates: 15000, currency: 'PKT', change24: 1 },
@@ -13,26 +13,56 @@ const OverView = () => {
         { name: 'NASDAQ', rates: 14000, currency: 'PKT', change24: 1.2 },
         { name: 'S&P 500', rates: 4200, currency: 'PKT', change24: 1.5 },
     ]
-    const preciousMetals = [
-        { name: 'ZŁOTO', rates: 1870, currency: 'USD', change24: -1.2 },
-        { name: 'SREBRO', rates: 30, currency: 'USD', change24: 3.0 },
-        { name: 'PALLAD', rates: 1900, currency: 'USD', change24: 2 },
-        { name: 'PLATYNA', rates: 2000, currency: 'USD', change24: -1.5 },
-    ]
-
 
     const NBPAPI = 'http://api.nbp.pl/api/exchangerates/tables/A/';
     const coinGeckoAPI = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1&sparkline=false';
+    const preciousMetalsAPI = 'https://api.metals.live/v1/spot';
 
     useEffect(() => {
         let mounted = true;
         getCurrencyRates(mounted);
         getCryptoCurrencyRates(mounted);
+        getPreciousMetals(mounted);
         return () => {
             mounted = false;
         }
     }, [])
 
+    const getPreciousMetals = async (mounted) => {
+        if (mounted) {
+            const resposne = await fetch(preciousMetalsAPI);
+            const data = await resposne.json();
+            const metals = [
+                {
+                    id: 0,
+                    name: "Złoto",
+                    price: 0
+                },
+                {
+                    id: 1,
+                    name: "Platyna",
+                    price: 0
+                },
+                {
+                    id: 2,
+                    name: "Srebro",
+                    price: 0
+                },
+                {
+                    id: 3,
+                    name: "Pallad",
+                    price: 0
+                }
+
+            ];
+            metals[0].price = data[0].gold;
+            metals[1].price = data[1].platinum;
+            metals[2].price = data[2].silver;
+            metals[3].price = data[3].palladium;
+            console.log(metals)
+            setPreciousMetals(metals);
+        }
+    }
     const getCryptoCurrencyRates = async (mounted) => {
         if (mounted) {
             const response = await fetch(coinGeckoAPI);

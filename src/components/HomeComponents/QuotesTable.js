@@ -18,8 +18,9 @@ const QuotesTable = (props) => {
     if (props.type === "indexes") {
         indexes = props.indexes.map(el => <Item key={el.name} name={el.name} rates={el.rates} currency={el.currency} change24={el.change24} />)
     }
+
     if (props.type === "preciousMetals") {
-        precious = props.precious.map(el => <Item key={el.name} name={el.name} rates={el.rates} currency={el.currency} change24={el.change24} />)
+        precious = props.precious.map(el => <Item key={el.id} name={el.name} rates={el.price} currency='USD' />)
     }
 
 
