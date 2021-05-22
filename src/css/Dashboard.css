@@ -35,3 +35,13 @@ li .active{
     padding-bottom: 20px;
     text-align: center;
 }
+.Quotes-header, .Quotes-container{
+    padding-top: 20px;
+}
+.Quotes-header_name, .Quotes-header_price, .Quotes-header_currency, .Quotes-header_change, .Quotes-header_marketcap, .Quotes-item-prop{
+    display:inline-block;
+}
+.Quotes-item-prop{
+    padding-top: 5px;
+    border-bottom: 0.5px solid black;
+}

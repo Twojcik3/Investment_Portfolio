@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Router>
       <AppProvider>
-        <Route path="/" exact component={Home}></Route>
+        <Route path="/" exact><Home /></Route>
         <ProtectedRoute path="/dashboard" component={Dashboard} />
       </AppProvider>
     </Router>
