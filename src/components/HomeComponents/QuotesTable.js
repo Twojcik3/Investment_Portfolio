@@ -22,8 +22,7 @@ const QuotesTable = (props) => {
     if (props.type === "preciousMetals") {
         precious = props.precious.map(el => <Item key={el.id} name={el.name} rates={el.price} currency='USD' />)
     }
-
-
+    console.log(props.type)
     return (
         <div >
             <div>{props.type === "currencies" ? rightCurrency : <div />}</div>

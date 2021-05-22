@@ -2,10 +2,13 @@
     height: 70vh;
     background-color: #292929;
     border-radius: 20px;
-    font-size: 18px;
+    font-size: 16px;
 }
 .containerDashboard{
     margin-left: 40px;
+}
+.Content{
+
 }
 .Navigation a{
     text-decoration: none;
@@ -44,4 +47,19 @@ li .active{
 .Quotes-item-prop{
     padding-top: 5px;
     border-bottom: 0.5px solid black;
+}
+
+.add-item_form_group{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Add-Item{
+    border: 0.5px solid black;
+    border-radius: 20px;
+}
+.Display-inline{
+    display: inline-block
 }

@@ -12,7 +12,7 @@ const Content = () => {
     const [cryptoCureencyTable, setCryptoCurrencyTable] = useState([]);
     const [preciousMetals, setPreciousMetals] = useState([]);
     const NBPAPI = 'http://api.nbp.pl/api/exchangerates/tables/A/';
-    const coinGeckoAPI = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false';
+    const coinGeckoAPI = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=200&page=1&sparkline=false';
     const preciousMetalsAPI = 'https://api.metals.live/v1/spot';
 
     useEffect(() => {

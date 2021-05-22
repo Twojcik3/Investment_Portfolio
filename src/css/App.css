@@ -40,7 +40,6 @@ footer p{
 .nav-tabs a{
   text-decoration: none;
   color: #292929;
-  
   transition: .2s;
 }
 .nav-tabs a:hover{
@@ -52,7 +51,6 @@ footer p{
 }
 .Item-prop{
   float: left;
-  
   padding-top: 10px;
 }
 .Item-table{

@@ -19,7 +19,7 @@ const Navigation = () => {
                 <NavLink to="/dashboard/quotes" >Notowania</NavLink>
             </li>
             <li className="col-lg-12">
-                <NavLink to="/dashboard/info" >Informacje o aplikacji</NavLink>
+                <NavLink to="/dashboard/info" >Informacje</NavLink>
             </li>
         </div>
     )
