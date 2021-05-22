@@ -32,3 +32,10 @@ exports.getUsers = function (req, res) {
         .then((users) => res.json(users))
         .catch((err) => { console.log(err) })
 }
+exports.userMustBeLoggedIn = function (req, res, next) {
+    if (req.session.user) {
+        next()
+    } else {
+        console.log("User is not logged in")
+    }
+}
