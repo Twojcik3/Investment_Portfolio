@@ -17,3 +17,16 @@ exports.deleteItem = function (req, res) {
         console.log(err);
     })
 }
+
+exports.editItem = function (req, res) {
+    let item = new Item(req.body, req.session.user._id);
+    item.editItem(req.params.id, req.session.user._id).then((status) => {
+        if (status === "success") {
+            res.send("Item has been updated")
+        } else {
+            res.send("Error")
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+}

@@ -29,7 +29,7 @@ Item.prototype.addItem = function () {
 Item.getUserItems = function (userId) {
     return new Promise(async (resolve, reject) => {
         let items = await itemsCollection.aggregate(
-            [{ match: { author: ObjectID(userId) } }]
+            [{ $match: { author: ObjectID(userId) } }]
         ).toArray();
         resolve(items);
     })
@@ -42,6 +42,39 @@ Item.deleteItem = function (itemId, authorId) {
         } else {
             reject("Item can not be deleted")
         }
+    })
+}
+Item.prototype.editItem = function (itemmId, authorId) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let item = await itemsCollection.findOne({ _id: ObjectID(itemmId), author: ObjectID(authorId) });
+            if (item) {
+                let status = await this.update(itemmId);
+                resolve(status)
+            } else {
+                reject()
+            }
+        } catch {
+            reject
+        }
+    })
+}
+Item.prototype.update = function (itemId) {
+    this.cleanUp();
+    return new Promise(async (resolve, reject) => {
+        await itemsCollection.findOneAndUpdate({ _id: new ObjectID(itemId) },
+            {
+                $set: {
+                    purchaseDate: this.data.purchaseDate,
+                    category: this.data.category,
+                    asset: this.data.asset,
+                    quantity: this.data.quantity,
+                    purchasePrice: this.data.purchasePrice,
+                    currency: this.data.currency,
+                    valuePLN: this.data.valuePLN
+                }
+            })
+        resolve("success")
     })
 }
 module.exports = Item;

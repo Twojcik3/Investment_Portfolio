@@ -1,4 +1,5 @@
 const User = require('../models/UserModel');
+const Item = require('../models/ItemModel')
 
 exports.login = function (req, res) {
     let user = new User(req.body);
@@ -38,4 +39,11 @@ exports.userMustBeLoggedIn = function (req, res, next) {
     } else {
         console.log("User is not logged in")
     }
+}
+exports.getUserItems = function (req, res) {
+    Item.getUserItems(req.session.user._id).then((items) => {
+        res.json(items)
+    }).catch((err) => {
+        console.log(err)
+    })
 }

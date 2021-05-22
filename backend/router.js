@@ -15,7 +15,9 @@ router
 
 //items routes
 router
+    .get('/getItems', userController.userMustBeLoggedIn, userController.getUserItems)
     .post('/addItem', userController.userMustBeLoggedIn, itemController.addItem)
     .delete('/deleteItem/:id', userController.userMustBeLoggedIn, itemController.deleteItem)
+    .post('/editItem/:id', userController.userMustBeLoggedIn, itemController.editItem)
 
 module.exports = router
