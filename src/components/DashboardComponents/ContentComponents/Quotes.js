@@ -16,7 +16,7 @@ const Quotes = (props) => {
         <div className="Qutoes-content">
             <div className="Quotes-input">
                 <select value={inputSwitch} onChange={handleSwitch}>
-                    <option value="Currencies" selected>Waluty obce</option>
+                    <option value="Currencies" defaultValue>Waluty obce</option>
                     <option value="CryptoCurrencies">Kryptowaluty</option>
                     <option value="PreciousMetals" >Metale szlachetne</option>
                     <option value="GPWExchange" >Akcje GPW</option>

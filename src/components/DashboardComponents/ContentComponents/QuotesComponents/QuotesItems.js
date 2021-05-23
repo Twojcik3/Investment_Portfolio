@@ -12,7 +12,6 @@ const QuotesItems = (props) => {
         tabRates = props.metalsRates.map(el => <ItemRow key={el.id} name={el.name} currency='USD' rates={el.price} change24="-" />)
     }
 
-    console.log(tabRates)
     return (
         <div className="Quotes-container col-md-12">
             {tabRates}
