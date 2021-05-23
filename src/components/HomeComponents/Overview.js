@@ -96,7 +96,6 @@ const OverView = () => {
                 </li>
             </ul>
             <div className="tab-content col-lg-12 col-sm-12 col-xs-12">
-                {console.log(window.location.href.substr(window.location.href.length - 4, 4))}
                 <div className={(
                     (window.location.href.substr(window.location.href.length - 4, 4) !== "2tab") &&
                     (window.location.href.substr(window.location.href.length - 4, 4) !== "3tab") &&
