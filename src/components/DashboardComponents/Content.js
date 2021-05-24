@@ -28,7 +28,7 @@ const Content = () => {
     }, [])
     useEffect(() => {
         getUserItems();
-    }, [])
+    })
     const getUserItems = async () => {
         axios.get('http://localhost:5000/getItems', {
             headers: {

@@ -63,3 +63,7 @@ li .active{
 .Display-inline{
     display: inline-block
 }
+.Items-group h2{
+    text-align: center;
+    margin-top: 10px
+}

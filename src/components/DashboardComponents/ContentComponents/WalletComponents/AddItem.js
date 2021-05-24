@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import WalletItem from './WalletItem';
+
 
 const AddItem = (props) => {
     const [inputCategory, setInputCategory] = useState("Currencies")
     const [purchaseDate, setPurchaseDate] = useState("");
     const [quantity, setQuantity] = useState();
     const [price, setPrice] = useState();
-    const [asset, setAsset] = useState();
+    const [asset, setAsset] = useState('THB');
     const [currency, setCurrency] = useState('PLN');
 
     const handleCategory = (e) => {
@@ -33,12 +33,6 @@ const AddItem = (props) => {
     const optionsCryptoCurrency = props.cryptoCurrencyRates.map(el => <option key={el.name} value={el.name}>{el.name}</option>)
     const optionsMetals = props.metalsRates.map(el => <option key={el.name} value={el.name}>{el.name}</option>)
     optionsCurrency[optionsCurrency.length] = <option key='PLN' value="PLN">PLN</option>
-
-    const currencies = props.items.filter(el => el.category === "Currencies");
-    const preciouses = props.items.filter(el => el.category === "PreciousMetals");
-    const cryptos = props.items.filter(el => el.category === "CryptoCurrencies");
-    const gpwexchanges = props.items.filter(el => el.category === "GPWExchange");
-
 
     const submitItem = (e) => {
         e.preventDefault();
