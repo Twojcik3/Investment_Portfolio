@@ -7,7 +7,7 @@ const AddItem = (props) => {
     const [purchaseDate, setPurchaseDate] = useState("");
     const [quantity, setQuantity] = useState();
     const [price, setPrice] = useState();
-    const [asset, setAsset] = useState('THB');
+    const [asset, setAsset] = useState();
     const [currency, setCurrency] = useState('PLN');
 
     const handleCategory = (e) => {
@@ -28,11 +28,31 @@ const AddItem = (props) => {
     const handleCurrency = (e) => {
         setCurrency(e.target.value)
     }
+    const clearState = () => {
+        setInputCategory("Currencies");
+
+    }
 
     const optionsCurrency = props.currencyRates.map(el => <option key={el.code} value={el.code}>{el.code}</option>)
     const optionsCryptoCurrency = props.cryptoCurrencyRates.map(el => <option key={el.name} value={el.name}>{el.name}</option>)
     const optionsMetals = props.metalsRates.map(el => <option key={el.name} value={el.name}>{el.name}</option>)
     optionsCurrency[optionsCurrency.length] = <option key='PLN' value="PLN">PLN</option>
+
+    const calculateValuePLN = (asset, quantity, price, currency) => {
+        if (asset === "PLN") {
+            return quantity * price;
+        } else {
+            let rate = 1;
+            props.currencyRates.forEach((el) => {
+                if (el.code === currency) {
+                    rate = el.mid;
+                }
+            })
+            console.log(rate);
+            return quantity * price * rate;
+        }
+
+    }
 
     const submitItem = (e) => {
         e.preventDefault();
@@ -42,8 +62,8 @@ const AddItem = (props) => {
             asset: asset,
             quantity: quantity,
             purchasePrice: price,
-            currency: currency,
-            valuePLN: 1
+            currency: asset === "PLN" ? 'PLN' : currency,
+            valuePLN: calculateValuePLN(asset, quantity, price, currency)
         }
         if (validateData()) {
             axios.post('http://localhost:5000/addItem', item, {
@@ -68,6 +88,9 @@ const AddItem = (props) => {
 
         return true
 
+    }
+    const handlePLN = () => {
+        setCurrency('PLN')
     }
     return (
         <div className="Add-Item">
@@ -102,7 +125,7 @@ const AddItem = (props) => {
                 <div className="add-item_form_group col-md-3 Display-inline ">
                     <label htmlFor="add-item_currency" className="col-md-12">Waluta</label>
                     <select name="add-item_currency" className="col-md-12" onChange={handleCurrency}>
-                        {inputCategory === "Currencies" ? <option value='PLN'>PLN</option> : optionsCurrency}
+                        {inputCategory === "Currencies" ? <option value='PLN' onChange={handlePLN}>PLN</option> : optionsCurrency}
 
                     </select>
                 </div>

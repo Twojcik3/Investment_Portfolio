@@ -6,10 +6,10 @@ const ItemsContainer = (props) => {
     const cryptos = props.items.filter(el => el.category === "CryptoCurrencies");
     const gpwexchanges = props.items.filter(el => el.category === "GPWExchange");
     return (
-        <div className="Items-container col-lg-12">
+        <div className="Items-container">
             <div className="Items-group">
                 <h2>Gotówka</h2>
-                <div>Wallet item</div>
+                <WalletItem />
                 <div className="Items-group_summary">Summary</div>
             </div>
             <div className="Items-group">

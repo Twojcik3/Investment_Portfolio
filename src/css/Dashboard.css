@@ -67,3 +67,11 @@ li .active{
     text-align: center;
     margin-top: 10px
 }
+.wallet-item{
+    border-bottom: 1px solid black;
+    height: 50px;
+    width: 100%;
+}
+.item-box{
+    float: left;
+}
