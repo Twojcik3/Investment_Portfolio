@@ -117,8 +117,9 @@ li .active{
 }
 
 .Items-group_summary{
-    margin-top: 10px;
+    margin-top: 25px;
     margin-bottom: 10px;
+    height: 80px;
 }
 .Items-group_summary h4{
     font-size: 15px;
@@ -127,5 +128,10 @@ li .active{
 
 .Items-group_summary h5{
     font-size: 13px;
+    font-weight: bold;
+}
+.Items-group_summary h6{
+    font-size: 13px;
+    float: left;
     font-weight: bold;
 }
