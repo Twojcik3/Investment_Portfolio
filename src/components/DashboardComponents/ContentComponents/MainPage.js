@@ -7,8 +7,8 @@ const MainPage = (props) => {
             <div className="wholeWallet">Wartość całego portfela:</div>
             <div className="cash-summary">Gotówka {(props.totalCurrentCash).toFixed(2)}</div>
             <div className="security-summary">Wartość portfela akcji</div>
-            <div className="crypto-summary">Wartość portfela kryptowalut {(props.totalCrypto.toFixed(2))}</div>
-            <div className="precious-summary">Wartość portfela metali szlachetnych: {props.totalMetals}</div>
+            <div className="crypto-summary">Wartość portfela kryptowalut {(props.totalCurrentCrypto).toFixed(2)}</div>
+            <div className="precious-summary">Wartość portfela metali szlachetnych: {(props.totalCurrentMetals).toFixed(2)}</div>
         </div>
     )
 }

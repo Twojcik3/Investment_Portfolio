@@ -33,6 +33,8 @@ const Content = () => {
         calculateTotalWallet();
         calculateTotalCategory();
         calculateTotalCash();
+        calculateTotalMetals();
+        calculateTotalCrypto();
         return () => {
             mounted = false;
         }
@@ -100,14 +102,14 @@ const Content = () => {
             setCurrencyTable(data[0].rates)
         }
     }
-    const calculateTotalWallet = () => {
+    const calculateTotalWallet = async () => {
         let amount = 0;
         items.forEach((el) => {
             amount += el.valuePLN;
         })
         setTotalWallet(amount)
     }
-    const calculateTotalCategory = () => {
+    const calculateTotalCategory = async () => {
         let amountCash = 0;
         let amountCrypto = 0;
         let amountMetals = 0;
@@ -126,7 +128,7 @@ const Content = () => {
         setTotalCrypto(amountCrypto);
         setTotalMetals(amountMetals);
     }
-    const calculateTotalCash = () => {
+    const calculateTotalCash = async () => {
         let amountCashCurrent = 0;
         items.forEach((el) => {
             if (el.category === "Currencies") {
@@ -143,18 +145,75 @@ const Content = () => {
                 }
             }
         })
-
+        console.log(amountCashCurrent)
         setTotalCurrentCash(amountCashCurrent)
+    }
+    const calculateTotalMetals = () => {
+        let amountCurrentMetals = 0;
+        let rateUSD;
+        currencyTable.forEach((el) => {
+            if (el.code === "USD") {
+                rateUSD = el.mid
+            }
+        })
+
+        items.forEach((el) => {
+            if (el.category === "PreciousMetals") {
+                preciousMetals.forEach((metal) => {
+                    if (metal.name === el.asset) {
+                        let valPLN = el.quantity * metal.price * rateUSD;
+                        amountCurrentMetals += valPLN
+                    }
+                })
+            }
+        })
+        setTotalCurrentMetals(amountCurrentMetals);
+
+
+    }
+    const calculateTotalCrypto = () => {
+        let amountCurrentCrypto = 0;
+        let rateUSD;
+        currencyTable.forEach((el) => {
+            if (el.code === "USD") {
+                rateUSD = el.mid
+            }
+        })
+        console.log(rateUSD)
+        items.forEach((el) => {
+            if (el.category === "CryptoCurrencies") {
+                cryptoCureencyTable.forEach((crypto) => {
+                    if (crypto.name === el.asset) {
+                        let valPLN = el.quantity * crypto.current_price * rateUSD;
+                        amountCurrentCrypto += valPLN;
+                    }
+
+                })
+            }
+        })
+        console.log(amountCurrentCrypto)
+        setTotalCurrentCrypto(amountCurrentCrypto);
     }
     return (
         <div className="col-lg-8 offset-md-1 Content">
             <Switch>
-                <Route path="/dashboard/" exact ><MainPage items={items} totalWallet={totalWalletAmount} totalCash={totalCash} totalCurrentCash={totalCurrentCash}
-                    totalMetals={totalMetals} totalCrypto={totalCrypto} />
-                </Route>
-                <Route path="/dashboard/wallet" ><Wallet currencyRates={currencyTable} cryptoCurrencyRates={cryptoCureencyTable} totalCash={totalCash}
+                <Route path="/dashboard/" exact ><MainPage items={items}
+                    totalWallet={totalWalletAmount}
+                    totalCash={totalCash}
                     totalCurrentCash={totalCurrentCash}
-                    metalsRates={preciousMetals} items={items} />
+                    totalMetals={totalMetals}
+                    totalCurrentMetals={totalCurrentMetals}
+                    totalCrypto={totalCrypto}
+                    totalCurrentCrypto={totalCurrentCrypto} />
+                </Route>
+                <Route path="/dashboard/wallet" ><Wallet currencyRates={currencyTable} cryptoCurrencyRates={cryptoCureencyTable} metalsRates={preciousMetals} items={items}
+                    totalCash={totalCash}
+                    totalCurrentCash={totalCurrentCash}
+                    totalMetals={totalMetals}
+                    totalCurrentMetals={totalCurrentMetals}
+                    totalCrypto={totalCrypto}
+                    totalCurrentCrypto={totalCurrentCrypto}
+                />
                 </Route>
                 <Route path="/dashboard/statistic"><Statistic items={items} /></Route>
                 <Route path="/dashboard/quotes" ><Quotes currencyRates={currencyTable} cryptoCurrencyRates={cryptoCureencyTable} metalsRates={preciousMetals} /></Route>

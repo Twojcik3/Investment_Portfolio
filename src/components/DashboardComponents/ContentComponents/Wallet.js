@@ -7,7 +7,12 @@ const Wallet = (props) => {
         <div className="Wallet col-md-12 col-lg-12">
             <AddItem currencyRates={props.currencyRates} cryptoCurrencyRates={props.cryptoCurrencyRates} metalsRates={props.metalsRates} items={props.items} />
             <ItemsContainer items={props.items} currencyRates={props.currencyRates} cryptoCurrencyRates={props.cryptoCurrencyRates} metalsRates={props.metalsRates}
-                totalCash={props.totalCash} totalCurrentCash={props.totalCurrentCash} />
+                totalMetals={props.totalMetals}
+                totalCurrentMetals={props.totalCurrentMetals}
+                totalCash={props.totalCash} totalCurrentCash={props.totalCurrentCash}
+                totalCrypto={props.totalCrypto}
+                totalCurrentCrypto={props.totalCurrentCrypto}
+            />
         </div>
     )
 }

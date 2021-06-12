@@ -28,10 +28,7 @@ const AddItem = (props) => {
     const handleCurrency = (e) => {
         setCurrency(e.target.value)
     }
-    const clearState = () => {
-        setInputCategory("Currencies");
 
-    }
 
     const optionsCurrency = props.currencyRates.map(el => <option key={el.code} value={el.code}>{el.code}</option>)
     const optionsCryptoCurrency = props.cryptoCurrencyRates.map(el => <option key={el.name} value={el.name}>{el.name}</option>)
