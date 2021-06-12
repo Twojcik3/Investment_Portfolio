@@ -65,13 +65,67 @@ li .active{
 }
 .Items-group h2{
     text-align: center;
-    margin-top: 10px
+    margin-top: 20px;
+    font-size: 25px;
+    text-decoration: underline;
+    font-weight: bold;
 }
 .wallet-item{
+    margin-top: 10px;
     border-bottom: 1px solid black;
     height: 50px;
     width: 100%;
 }
-.item-box{
+.wallet-header{
+    height: 25px;
+    border-bottom: 2px solid black;
+    height: 25px;
+}
+.item-box, .item-box_header{
     float: left;
+    text-align: center;
+}
+.item-box_header{
+    font-size: 13px;
+}
+.svg-inline--fa {
+    font-size: inherit;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -.125em;
+}
+.text-primary {
+    color: #007bff;
+}
+.text-danger{
+    color: #dc3545;
+}
+.button .item-box{
+    width: 10px;
+}
+.wallet-item_name{
+    width: 170px;
+}
+.wallet-item_quantity{
+    width: 80px;
+}
+.wallet-item_currentValue, .wallet-item_profitLoss{
+    width: 140px;
+}
+.wallet-item_edit, .wallet-item_delete{
+    margin-left: 20px;
+}
+
+.Items-group_summary{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.Items-group_summary h4{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.Items-group_summary h5{
+    font-size: 13px;
+    font-weight: bold;
 }
