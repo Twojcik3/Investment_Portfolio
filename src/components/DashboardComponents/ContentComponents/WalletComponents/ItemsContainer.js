@@ -52,7 +52,7 @@ const ItemsContainer = (props) => {
                     <h4>Podsumowanie</h4>
                     <h5>Wartość: {(props.totalCurrentCash).toFixed(2)} PLN</h5>
                     <h6>Zysk/Strata: </h6>
-                    <h6 className={colorTextCash}>  {profitCash} PLN</h6>
+                    <h6 className={colorTextCash}>{profitCash} PLN</h6>
                 </div>
             </div>
             <div className="Items-group">

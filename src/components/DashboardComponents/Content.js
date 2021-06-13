@@ -14,9 +14,9 @@ const Content = () => {
     const [preciousMetals, setPreciousMetals] = useState([]);
     const [items, setItems] = useState([]);
     const [totalWalletAmount, setTotalWallet] = useState();
+    const [totalCurrentWalletAmount, setTotalCurrentWallet] = useState();
     const [totalCash, setTotalCash] = useState();
     const [totalCurrentCash, setTotalCurrentCash] = useState();
-    const [totalCashProfit, setTotalCashProfit] = useState();
     const [totalMetals, setTotalMetals] = useState();
     const [totalCurrentMetals, setTotalCurrentMetals] = useState();
     const [totalCrypto, setTotalCrypto] = useState();
@@ -30,18 +30,19 @@ const Content = () => {
         getCurrencyRates(mounted);
         getCryptoCurrencyRates(mounted);
         getPreciousMetals(mounted);
-        calculateTotalWallet();
-        calculateTotalCategory();
-        calculateTotalCash();
-        calculateTotalMetals();
-        calculateTotalCrypto();
         return () => {
             mounted = false;
         }
     }, [])
     useEffect(() => {
         getUserItems();
-    }, [])
+        calculateTotalWallet();
+        calculateTotalCategory();
+        calculateTotalCash();
+        calculateTotalMetals();
+        calculateTotalCrypto();
+        calculateTotalCurrentWallet();
+    })
     const getUserItems = async () => {
         axios.get('http://localhost:5000/getItems', {
             headers: {
@@ -52,6 +53,7 @@ const Content = () => {
             const userItems = response.data;
             setItems(userItems);
         })
+
     }
 
     const getPreciousMetals = async (mounted) => {
@@ -102,14 +104,19 @@ const Content = () => {
             setCurrencyTable(data[0].rates)
         }
     }
-    const calculateTotalWallet = async () => {
+    const calculateTotalWallet = () => {
         let amount = 0;
         items.forEach((el) => {
             amount += el.valuePLN;
         })
         setTotalWallet(amount)
     }
-    const calculateTotalCategory = async () => {
+    const calculateTotalCurrentWallet = () => {
+        let amount = totalCurrentCash + totalCurrentCrypto + totalCurrentMetals;
+        setTotalCurrentWallet(amount);
+
+    }
+    const calculateTotalCategory = () => {
         let amountCash = 0;
         let amountCrypto = 0;
         let amountMetals = 0;
@@ -128,7 +135,7 @@ const Content = () => {
         setTotalCrypto(amountCrypto);
         setTotalMetals(amountMetals);
     }
-    const calculateTotalCash = async () => {
+    const calculateTotalCash = () => {
         let amountCashCurrent = 0;
         items.forEach((el) => {
             if (el.category === "Currencies") {
@@ -145,7 +152,7 @@ const Content = () => {
                 }
             }
         })
-        console.log(amountCashCurrent)
+        // console.log(amountCashCurrent)
         setTotalCurrentCash(amountCashCurrent)
     }
     const calculateTotalMetals = () => {
@@ -179,7 +186,7 @@ const Content = () => {
                 rateUSD = el.mid
             }
         })
-        console.log(rateUSD)
+        //console.log(rateUSD)
         items.forEach((el) => {
             if (el.category === "CryptoCurrencies") {
                 cryptoCureencyTable.forEach((crypto) => {
@@ -191,14 +198,15 @@ const Content = () => {
                 })
             }
         })
-        console.log(amountCurrentCrypto)
+        //console.log(amountCurrentCrypto)
         setTotalCurrentCrypto(amountCurrentCrypto);
     }
     return (
-        <div className="col-lg-8 offset-md-1 Content">
+        <div className="col-lg-8 offset-md-3 Content">
             <Switch>
                 <Route path="/dashboard/" exact ><MainPage items={items}
                     totalWallet={totalWalletAmount}
+                    totalCurrentWallet={totalCurrentWalletAmount}
                     totalCash={totalCash}
                     totalCurrentCash={totalCurrentCash}
                     totalMetals={totalMetals}
@@ -206,7 +214,10 @@ const Content = () => {
                     totalCrypto={totalCrypto}
                     totalCurrentCrypto={totalCurrentCrypto} />
                 </Route>
-                <Route path="/dashboard/wallet" ><Wallet currencyRates={currencyTable} cryptoCurrencyRates={cryptoCureencyTable} metalsRates={preciousMetals} items={items}
+                <Route path="/dashboard/wallet" ><Wallet currencyRates={currencyTable}
+                    cryptoCurrencyRates={cryptoCureencyTable}
+                    metalsRates={preciousMetals}
+                    items={items}
                     totalCash={totalCash}
                     totalCurrentCash={totalCurrentCash}
                     totalMetals={totalMetals}
@@ -216,7 +227,10 @@ const Content = () => {
                 />
                 </Route>
                 <Route path="/dashboard/statistic"><Statistic items={items} /></Route>
-                <Route path="/dashboard/quotes" ><Quotes currencyRates={currencyTable} cryptoCurrencyRates={cryptoCureencyTable} metalsRates={preciousMetals} /></Route>
+                <Route path="/dashboard/quotes" ><Quotes currencyRates={currencyTable}
+                    cryptoCurrencyRates={cryptoCureencyTable}
+                    metalsRates={preciousMetals} />
+                </Route>
                 <Route path="/dashboard/info"><AppInformation /></Route>
             </Switch>
         </div>

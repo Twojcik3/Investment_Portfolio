@@ -23,14 +23,12 @@ const Header = () => {
         })
     }
     return (
-        <header className="header-bar mb-3">
+        <header className="header-bar header-dashboard bg-secondary">
             <div className="container d-flex flex-column flex-md-row align-items-center p-3">
-                <h4 className="my-0 mr-md-auto font-weight-normal">
+                <h4 className="offset-lg-2 my-0 mr-md-auto font-weight-normal">
                     <a href="/" className="text-white">Portfolio inwestycyjne</a>
                 </h4>
-                <div className="col-md mr-0 mb-3 pr-md-0 mb-md-0">
-                    {username}
-                </div>
+
                 <div className="flex-row my-3 my-md-0">
                     <button className="btn btn-info" onClick={logout}>Wyloguj</button>
                 </div>

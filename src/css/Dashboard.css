@@ -1,14 +1,18 @@
 .Navigation{
-    height: 70vh;
-    background-color: #292929;
-    border-radius: 20px;
-    font-size: 16px;
+    font-size: 20px;
+    width: 250px;
 }
-.containerDashboard{
-    margin-left: 40px;
+.navbar{
+    padding-top: none;
+    height: 100%;
+    background-color: #343a40;
+}
+#fixed-sidebar{
+    position: fixed;
 }
 .Content{
-
+    height: 100%;
+     margin-top: 50px   
 }
 .Navigation a{
     text-decoration: none;
@@ -17,14 +21,14 @@
     border-bottom: 2px solid white;
 }
 .Navigation li{
-    padding-top: 35px;
+    padding-bottom: 50px;
     text-align: left; 
 }
 .Navigation a:hover{
     border-bottom-color: yellow;
 }
 .Navigation li:hover{
-    transform: translateX(20px);
+    transform: translateX(15px);
 }
 li .active{
     border-bottom-color:  yellow;
@@ -80,6 +84,8 @@ li .active{
     height: 25px;
     border-bottom: 2px solid black;
     height: 25px;
+    font-size: 60px;
+    font-weight: bold;
 }
 .item-box, .item-box_header{
     float: left;
@@ -104,13 +110,13 @@ li .active{
     width: 10px;
 }
 .wallet-item_name{
-    width: 170px;
+    width: 190px;
 }
 .wallet-item_quantity{
     width: 80px;
 }
 .wallet-item_currentValue, .wallet-item_profitLoss{
-    width: 140px;
+    width: 190px;
 }
 .wallet-item_edit, .wallet-item_delete{
     margin-left: 20px;

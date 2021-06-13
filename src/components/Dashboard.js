@@ -7,17 +7,12 @@ import Navigation from './DashboardComponents/Navigation';
 const Dashboard = () => {
 
     return (
-        <div>
+        <>
+            <Navigation />
             <Header />
-            <div className="container containerDashboard">
-                <div className="row">
-                    <Navigation />
-                    <Content />
-                </div>
-            </div>
-
+            <Content />
             <Footer />
-        </div>
+        </>
     )
 }
 

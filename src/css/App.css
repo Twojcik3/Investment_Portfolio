@@ -1,5 +1,5 @@
 body{
-  font-family: 'Open Sans', sans-serif;
+  font-family: Courier, monospace;
 }
 .header-bar {
   background-color: #292929;
@@ -29,6 +29,7 @@ footer p{
 }
 .overview{
   height: 320px;
+  font-size: 15px;
 }
 .nav-tabs{
   color: #292929
