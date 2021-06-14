@@ -11,16 +11,46 @@ const ItemsContainer = (props) => {
     const profitCrypto = (props.totalCurrentCrypto - props.totalCrypto).toFixed(2);
 
     const currenciesItems = currencies.map(el =>
-        <WalletItem key={el._id} category={el.category} name={el.asset} quantity={el.quantity} valuePLN={el.valuePLN} currency={el.currency}
-            currencyRates={props.currencyRates} cryptoCurrencyRates={props.cryptoCurrencyRates} metalsRates={props.metalsRates}
+        <WalletItem
+            key={el._id}
+            id={el._id}
+            category={el.category}
+            name={el.asset}
+            quantity={el.quantity}
+            valuePLN={el.valuePLN}
+            currency={el.currency}
+            currencyRates={props.currencyRates}
+            cryptoCurrencyRates={props.cryptoCurrencyRates}
+            metalsRates={props.metalsRates}
+            delete={props.delete}
         />)
     const preciousesItems = preciouses.map(el =>
-        <WalletItem key={el._id} category={el.category} name={el.asset} quantity={el.quantity} valuePLN={el.valuePLN} currency={el.currency}
-            currencyRates={props.currencyRates} cryptoCurrencyRates={props.cryptoCurrencyRates} metalsRates={props.metalsRates}
+        <WalletItem
+            key={el._id}
+            id={el._id}
+            category={el.category}
+            name={el.asset}
+            quantity={el.quantity}
+            valuePLN={el.valuePLN}
+            currency={el.currency}
+            currencyRates={props.currencyRates}
+            cryptoCurrencyRates={props.cryptoCurrencyRates}
+            metalsRates={props.metalsRates}
+            delete={props.delete}
         />)
     const cryptosItems = cryptos.map(el =>
-        <WalletItem key={el._id} category={el.category} name={el.asset} quantity={el.quantity} valuePLN={el.valuePLN} currency={el.currency}
-            currencyRates={props.currencyRates} cryptoCurrencyRates={props.cryptoCurrencyRates} metalsRates={props.metalsRates}
+        <WalletItem
+            key={el._id}
+            id={el._id}
+            category={el.category}
+            name={el.asset}
+            quantity={el.quantity}
+            valuePLN={el.valuePLN}
+            currency={el.currency}
+            currencyRates={props.currencyRates}
+            cryptoCurrencyRates={props.cryptoCurrencyRates}
+            metalsRates={props.metalsRates}
+            delete={props.delete}
         />)
     // const gpwexchangesItems = gpwexchanges.map(el => <WalletItem key={el._id} category={el.category} name={el.asset} quantity={el.quantity} valuePLN={el.valuePLN} currency={el.currency} />)
     let colorTextCash = "";

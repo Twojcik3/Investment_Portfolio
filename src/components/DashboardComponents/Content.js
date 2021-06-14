@@ -116,6 +116,19 @@ const Content = () => {
         setTotalCurrentWallet(amount);
 
     }
+    const deleteItem = (id) => {
+        const url = 'http://localhost:5000/deleteItem/' + id;
+        axios.delete(url, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        }).then((response) => {
+            console.log(response)
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
     const calculateTotalCategory = () => {
         let amountCash = 0;
         let amountCrypto = 0;
@@ -224,6 +237,7 @@ const Content = () => {
                     totalCurrentMetals={totalCurrentMetals}
                     totalCrypto={totalCrypto}
                     totalCurrentCrypto={totalCurrentCrypto}
+                    delete={deleteItem}
                 />
                 </Route>
                 <Route path="/dashboard/statistic"><Statistic items={items} /></Route>
