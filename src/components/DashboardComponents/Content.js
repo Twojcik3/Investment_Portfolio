@@ -217,35 +217,51 @@ const Content = () => {
     return (
         <div className="col-lg-8 offset-md-3 Content">
             <Switch>
-                <Route path="/dashboard/" exact ><MainPage items={items}
-                    totalWallet={totalWalletAmount}
-                    totalCurrentWallet={totalCurrentWalletAmount}
-                    totalCash={totalCash}
-                    totalCurrentCash={totalCurrentCash}
-                    totalMetals={totalMetals}
-                    totalCurrentMetals={totalCurrentMetals}
-                    totalCrypto={totalCrypto}
-                    totalCurrentCrypto={totalCurrentCrypto} />
+                <Route path="/dashboard/" exact >
+                    <MainPage
+                        items={items}
+                        totalWallet={totalWalletAmount}
+                        totalCurrentWallet={totalCurrentWalletAmount}
+                        totalCash={totalCash}
+                        totalCurrentCash={totalCurrentCash}
+                        totalMetals={totalMetals}
+                        totalCurrentMetals={totalCurrentMetals}
+                        totalCrypto={totalCrypto}
+                        totalCurrentCrypto={totalCurrentCrypto}
+                    />
                 </Route>
-                <Route path="/dashboard/wallet" ><Wallet currencyRates={currencyTable}
-                    cryptoCurrencyRates={cryptoCureencyTable}
-                    metalsRates={preciousMetals}
-                    items={items}
-                    totalCash={totalCash}
-                    totalCurrentCash={totalCurrentCash}
-                    totalMetals={totalMetals}
-                    totalCurrentMetals={totalCurrentMetals}
-                    totalCrypto={totalCrypto}
-                    totalCurrentCrypto={totalCurrentCrypto}
-                    delete={deleteItem}
-                />
+                <Route path="/dashboard/wallet" >
+                    <Wallet
+                        currencyRates={currencyTable}
+                        cryptoCurrencyRates={cryptoCureencyTable}
+                        metalsRates={preciousMetals}
+                        items={items}
+                        totalCash={totalCash}
+                        totalCurrentCash={totalCurrentCash}
+                        totalMetals={totalMetals}
+                        totalCurrentMetals={totalCurrentMetals}
+                        totalCrypto={totalCrypto}
+                        totalCurrentCrypto={totalCurrentCrypto}
+                        delete={deleteItem}
+                    />
                 </Route>
-                <Route path="/dashboard/statistic"><Statistic items={items} /></Route>
-                <Route path="/dashboard/quotes" ><Quotes currencyRates={currencyTable}
-                    cryptoCurrencyRates={cryptoCureencyTable}
-                    metalsRates={preciousMetals} />
+                <Route path="/dashboard/statistic">
+                    <Statistic
+                        totalCurrentCash={totalCurrentCash}
+                        totalCurrentMetals={totalCurrentMetals}
+                        totalCurrentCrypto={totalCurrentCrypto}
+                    />
                 </Route>
-                <Route path="/dashboard/info"><AppInformation /></Route>
+                <Route path="/dashboard/quotes" >
+                    <Quotes
+                        currencyRates={currencyTable}
+                        cryptoCurrencyRates={cryptoCureencyTable}
+                        metalsRates={preciousMetals}
+                    />
+                </Route>
+                <Route path="/dashboard/info">
+                    <AppInformation />
+                </Route>
             </Switch>
         </div>
     )

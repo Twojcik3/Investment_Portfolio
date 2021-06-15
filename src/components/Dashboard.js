@@ -11,7 +11,7 @@ const Dashboard = () => {
             <Navigation />
             <Header />
             <Content />
-            <Footer />
+
         </>
     )
 }

@@ -141,3 +141,18 @@ li .active{
     float: left;
     font-weight: bold;
 }
+.app-info-header{
+    height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.quotes-info{
+    height: 50px;
+    
+}
+.quotes-group{
+    float: left;
+}
+.source{
+    padding-left: 10px;
+}

@@ -35,23 +35,20 @@ const AddItem = (props) => {
     const optionsMetals = props.metalsRates.map(el => <option key={el.name} value={el.name}>{el.name}</option>)
     optionsCurrency[optionsCurrency.length] = <option key='PLN' value="PLN">PLN</option>
 
-    const calculateValuePLN = (asset, quantity, price, currency) => {
-        if (asset === "PLN") {
+    const calculateValuePLN = async (category, asset, quantity, price, currency) => {
+        if (asset === "PLN" || category === "Currencies") {
             return quantity * price;
         } else {
-            let rate = 1;
-            props.currencyRates.forEach((el) => {
-                if (el.code === currency) {
-                    rate = el.mid;
-                }
-            })
+            let response = await fetch(`http://api.nbp.pl/api/exchangerates/rates/A/${currency}/${purchaseDate}/`);
+            let data = await response.json();
+            let rate = data.rates[0].mid;
             console.log(rate);
             return quantity * price * rate;
         }
 
     }
 
-    const submitItem = (e) => {
+    const submitItem = async (e) => {
         e.preventDefault();
         const item = {
             purchaseDate: purchaseDate,
@@ -60,7 +57,7 @@ const AddItem = (props) => {
             quantity: quantity,
             purchasePrice: price,
             currency: asset === "PLN" ? 'PLN' : currency,
-            valuePLN: calculateValuePLN(asset, quantity, price, currency)
+            valuePLN: await calculateValuePLN(inputCategory, asset, quantity, price, currency, purchaseDate)
         }
         if (validateData()) {
             axios.post('http://localhost:5000/addItem', item, {
