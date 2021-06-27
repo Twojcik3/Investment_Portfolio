@@ -251,6 +251,7 @@ const Content = () => {
                         totalCurrentMetals={totalCurrentMetals}
                         totalCurrentCrypto={totalCurrentCrypto}
                         totalCurrentWallet={totalCurrentWalletAmount}
+                        items={items}
                     />
                 </Route>
                 <Route path="/dashboard/quotes" >
