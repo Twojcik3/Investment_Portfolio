@@ -1,6 +1,6 @@
 import React from 'react';
 import { PieChart, Pie, Tooltip, Sector, Cell, ResponsiveContainer } from 'recharts';
-
+import { Chart } from "react-google-charts";
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
@@ -31,24 +31,24 @@ const Statistic = (props) => {
             <div className="Wallet-parts">
                 <h4>Podział portfela</h4>
                 <div className="pie-chart_container">
-                    <ResponsiveContainer>
-                        <PieChart height={500} width={500}>
-                            <Pie
-                                data={data}
-                                cx="300"
-                                cy="150"
-                                outerRadius={150}
-                                fill="#8884d8"
-                                dataKey="value"
 
-                            >
-                                <Cell fill={COLORS[0]} label={data[0].name} />
-                                <Cell fill={COLORS[1]} label={data[1].name} />
-                                <Cell fill={COLORS[2]} label={data[2].name} />
+                    <Chart
+                        height={'400px'}
+                        width={'500px'}
+                        chartType="PieChart"
+                        loader={<div>Ładowanie wykresu</div>}
+                        data={[
+                            ['Aktywo', 'podział procentowy'],
+                            ['Gotówka', percentCash],
+                            ['Kryptowaluty', percentCrypto],
+                            ['Metale szlachetne', percentMetals]
+                        ]}
+                        options={{
+                            title: ''
+                        }}
+                        rootProps={{ 'data-testedid': '1' }}
+                    />
 
-                            </Pie>
-                        </PieChart>
-                    </ResponsiveContainer>
                 </div>
             </div>
             <div className="Wallet-change">
