@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const AddItem = (props) => {
     const [inputCategory, setInputCategory] = useState("Currencies")
-    const [purchaseDate, setPurchaseDate] = useState("");
+    const [purchaseDate, setPurchaseDate] = useState();
     const [quantity, setQuantity] = useState();
     const [price, setPrice] = useState();
     const [asset, setAsset] = useState();
